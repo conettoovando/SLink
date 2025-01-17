@@ -1,0 +1,13 @@
+### Crear una nueva url acortada
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+    "original_url": "http://holamundo.com"
+}
+
+### Obtener la pagina principal
+GET http://localhost:3000/
+
+### Obtener la información de una url acortada
+GET http://localhost:3000/holamundo
