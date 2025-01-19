@@ -17,7 +17,7 @@ await connect();
 export class LinkModel {
   static async getLink({ id }) {
     try {
-      const result = client.get(id);
+      const result = await client.get(id);
       return result;
     } catch (error) {
       return null;

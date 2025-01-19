@@ -10,4 +10,4 @@ Content-Type: application/json
 GET http://localhost:3000/
 
 ### Obtener la información de una url acortada
-GET http://localhost:3000/holamundo
+GET http://localhost:3000/f5da2b
