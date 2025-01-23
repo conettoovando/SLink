@@ -1,33 +1,22 @@
-import { createClient } from "redis";
-
-const client = createClient();
-
-client.on("error", (err) => {
-  console.error("Redis Client Error", err);
-});
-
-async function connect() {
-  if (!client.isOpen) {
-    await client.connect();
-    console.log("coneccion a redis establecida");
-  }
-}
-await connect();
+import { client as redisClient } from '../../app.js'
 
 export class LinkModel {
-  static async getLink({ id }) {
+  static async getLink ({ id }) {
+    const client = redisClient.getClient()
     try {
-      const result = await client.get(id);
-      return result;
+      const result = await client.get(id)
+      return result
     } catch (error) {
-      return null;
+      return null
     }
   }
 
-  static async createUrl({ id, input }) {
+  static async createUrl ({ id, input }) {
+    const client = redisClient.getClient()
+
     const result = await client.set(id, JSON.stringify(input), {
-      EX: 10 * 60,
-    });
-    return result;
+      EX: 10 * 60
+    })
+    return result
   }
 }
